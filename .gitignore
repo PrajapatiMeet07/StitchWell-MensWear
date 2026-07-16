@@ -1,0 +1,17 @@
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Dependencies
+node_modules/
+dist/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
