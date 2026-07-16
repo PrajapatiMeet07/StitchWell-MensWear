@@ -1828,6 +1828,23 @@ footer {
     transition: var(--transition-smooth);
   }
   
+  /* Enforce strict layout boundaries to prevent horizontal scroll stretching and force stacking */
+  #designer-customizer-container,
+  .designer-grid,
+  .designer-controls-card,
+  .tab-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .designer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  
   /* NON-STICKY Mobile Visualizer preview - matches natural scroll */
   .designer-preview-card {
     position: relative;
