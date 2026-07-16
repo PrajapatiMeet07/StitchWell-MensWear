@@ -1832,7 +1832,7 @@ footer {
     position: sticky;
     top: 70px;
     z-index: 80; /* Float under header (99) but above content (1) */
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem;
     border-bottom: 1px solid var(--border-color);
     background-color: rgba(18, 18, 18, 0.96);
     backdrop-filter: blur(8px);
@@ -1907,22 +1907,46 @@ footer {
   }
   
   .tab-content {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 
-  /* Stack choice lists on all mobile viewports to prevent 2-and-1 alignment wrap issues */
-  .garment-type-options.grid-3 {
-    grid-template-columns: 1fr;
+  .tab-content.active {
+    gap: 1.2rem;
   }
 
-  .details-options.grid-3 {
-    grid-template-columns: 1fr;
+  .control-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
   }
 
-  .details-options.grid-2 {
-    grid-template-columns: 1fr;
+  /* Keep Customizer choice buttons compact and side-by-side in rows on mobile screen */
+  .designer-controls-card .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
   }
 
+  .designer-controls-card .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+
+  .designer-controls-card .choice-btn {
+    padding: 0.6rem 0.3rem;
+  }
+
+  .designer-controls-card .choice-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .designer-controls-card .choice-price {
+    font-size: 0.6rem;
+  }
+
+  /* Compact Fabric Grid */
   .fabric-grid {
     grid-template-columns: 1fr;
     max-height: 240px;
@@ -1930,20 +1954,26 @@ footer {
   }
 
   .fabric-card {
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
   }
 
   .fabric-color-bubble {
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
   }
 
   .fabric-name {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
   .fabric-desc {
+    font-size: 0.58rem;
+  }
+
+  .fabric-surcharge {
     font-size: 0.6rem;
+    margin-top: 0rem;
   }
 
   .booking-card-form {
