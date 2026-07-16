@@ -26,6 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Setup Event Listeners
 function setupEventListeners() {
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById("menu-toggle-btn");
+  const mainNav = document.querySelector("nav");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mainNav.classList.toggle("active");
+    });
+  }
+
   // Navigation active state toggle & click scrolling
   const navLinks = document.querySelectorAll("nav a");
   navLinks.forEach(link => {
@@ -39,6 +50,12 @@ function setupEventListeners() {
           top: targetSection.offsetTop - 80, // Account for sticky header
           behavior: "smooth"
         });
+      }
+
+      // Close mobile menu on click
+      if (menuToggle && mainNav) {
+        menuToggle.classList.remove("active");
+        mainNav.classList.remove("active");
       }
 
       navLinks.forEach(l => l.classList.remove("active"));
