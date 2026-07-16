@@ -1720,7 +1720,7 @@ footer {
     transform: translateY(-15px);
     transition: var(--transition-smooth);
     z-index: 99;
-    overflow-y: auto; /* Enable scroll if height is constrained */
+    overflow-y: auto;
   }
   
   nav.active {
@@ -1735,17 +1735,55 @@ footer {
     padding: 0.5rem 2rem;
   }
 
+  /* Header actions in row */
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
   }
 
   .header-actions .btn-primary {
     display: none; /* Hide header book btn to save space */
   }
 
-  /* Hamburger Menu Button */
+  /* Make Cart Button and Hamburger uniform sizes and designs */
+  .cart-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    color: var(--color-text);
+    position: relative;
+    background: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0;
+  }
+
+  .cart-icon-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .cart-icon-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .cart-badge {
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
+    font-weight: 700;
+  }
+
+  /* Hamburger Menu Button to match Cart Button exactly */
   .menu-toggle-btn {
     display: flex;
     align-items: center;
@@ -1757,6 +1795,7 @@ footer {
     height: 40px;
     cursor: pointer;
     transition: var(--transition-fast);
+    padding: 0;
   }
 
   .menu-toggle-btn:hover, .menu-toggle-btn.active {
@@ -1764,25 +1803,87 @@ footer {
     color: var(--color-accent);
   }
 
-  .menu-toggle-btn.active .line-2 {
+  .menu-toggle-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  /* Precise Hamburger animations */
+  .menu-toggle-btn.active .line-1 {
     opacity: 0;
   }
-  .menu-toggle-btn.active .line-1 {
-    transform: rotate(45deg) translate(5px, 5px);
+  .menu-toggle-btn.active .line-2 {
+    transform: translateY(6px) rotate(45deg);
+    transform-origin: center;
   }
   .menu-toggle-btn.active .line-3 {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: translateY(-6px) rotate(-45deg);
+    transform-origin: center;
   }
   .menu-toggle-btn line {
     transform-origin: center;
     transition: var(--transition-smooth);
   }
   
+  /* STICKY Mobile Visualizer preview to save scrolling */
+  .designer-preview-card {
+    position: sticky;
+    top: 70px;
+    z-index: 80; /* Float under header (99) but above content (1) */
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(18, 18, 18, 0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .preview-header {
+    display: none; /* Hide header text on mobile sticky card */
+  }
+
+  .visualizer-canvas-container {
+    min-height: 130px;
+    height: 130px;
+    padding: 0.2rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  .visualizer-canvas-container svg {
+    max-height: 125px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+  }
+
+  .price-display-wrapper {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .price-breakdown {
+    display: none; /* Hide pricing surcharge item lists on mobile sticky card */
+  }
+
+  .total-price-bar strong {
+    font-size: 1.3rem;
+  }
+
+  .total-price-bar span {
+    font-size: 0.75rem;
+  }
+
+  .designer-controls-card {
+    position: relative;
+    z-index: 1; /* Allow scrolling underneath visualizer */
+  }
+
   /* Customizer Custom Touch Scrollable Tab Bar */
   .controls-tabs {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     gap: 0.4rem;
     border-bottom: 1px solid var(--border-color);
@@ -1790,11 +1891,11 @@ footer {
   }
   
   .controls-tabs::-webkit-scrollbar {
-    display: none; /* Hide scrollbar on Chrome/Safari */
+    display: none;
   }
   
   .tab-btn {
-    flex: 0 0 auto; /* Stop shrinking buttons */
+    flex: 0 0 auto;
     white-space: nowrap;
     padding: 0.8rem 1.2rem;
     font-size: 0.7rem;
@@ -1805,20 +1906,46 @@ footer {
     border-bottom: 2px solid var(--color-accent);
   }
   
-  .designer-preview-card {
-    padding: 1.5rem;
-  }
-  
-  .visualizer-canvas-container {
-    min-height: 300px;
-    padding: 1rem;
-  }
-  
   .tab-content {
     padding: 1.5rem;
   }
 
-  /* Booking form mobile sizing */
+  /* Stack choice lists on all mobile viewports to prevent 2-and-1 alignment wrap issues */
+  .garment-type-options.grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .details-options.grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .details-options.grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .fabric-grid {
+    grid-template-columns: 1fr;
+    max-height: 240px;
+    gap: 0.8rem;
+  }
+
+  .fabric-card {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .fabric-color-bubble {
+    width: 38px;
+    height: 38px;
+  }
+
+  .fabric-name {
+    font-size: 0.75rem;
+  }
+
+  .fabric-desc {
+    font-size: 0.6rem;
+  }
+
   .booking-card-form {
     padding: 2.5rem 1.5rem;
   }
@@ -1887,20 +2014,6 @@ footer {
   .filter-tag {
     padding: 0.4rem 0.8rem;
     font-size: 0.6rem;
-  }
-
-  /* Customizer controls grid stacking */
-  .fabric-grid {
-    grid-template-columns: 1fr; /* Single column fabric selection to prevent squished text */
-    max-height: 250px;
-  }
-
-  .details-options.grid-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .details-options.grid-2 {
-    grid-template-columns: 1fr;
   }
 
   .service-cards-row {
