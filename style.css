@@ -1837,6 +1837,8 @@ footer {
     background-color: rgba(18, 18, 18, 0.96);
     backdrop-filter: blur(8px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .preview-header {
@@ -1919,31 +1921,35 @@ footer {
     margin-bottom: 0.8rem;
   }
 
-  /* Keep Customizer choice buttons compact and side-by-side in rows on mobile screen */
-  .designer-controls-card .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
-  }
-
+  /* Stack choice lists on mobile to prevent horizontal page overflow and clipping */
+  .designer-controls-card .grid-3,
   .designer-controls-card .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.4rem;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
 
   .designer-controls-card .choice-btn {
-    padding: 0.6rem 0.3rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    gap: 1rem;
   }
 
   .designer-controls-card .choice-name {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    text-align: left;
   }
 
   .designer-controls-card .choice-price {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-top: 0;
   }
 
   /* Compact Fabric Grid */
