@@ -1612,38 +1612,69 @@ footer {
 }
 
 /* Responsiveness Media Queries */
+
+/* Tablet & Smaller Screens */
 @media (max-width: 1024px) {
-  h1, .hero-content h1 { font-size: 3.5rem; }
-  .section-title { font-size: 2.5rem; }
+  h1, .hero-content h1 { font-size: 3.2rem; }
+  .section-title { font-size: 2.4rem; }
   
-  .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-  .hero-content p { margin: 0 auto 2.5rem auto; }
-  .hero-actions { justify-content: center; }
-  .hero-badges-strip { justify-content: space-around; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  .hero-content p {
+    margin: 0 auto 2.5rem auto;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-badges-strip {
+    justify-content: space-around;
+    margin-top: 3rem;
+  }
   
-  .designer-grid { grid-template-columns: 1fr; }
-  .designer-preview-card { min-height: auto; }
+  .designer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .designer-preview-card {
+    min-height: auto;
+  }
   
-  .booking-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-about { grid-column: span 2; }
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  .footer-about {
+    grid-column: span 2;
+  }
 }
 
-/* Hide Hamburger by default on Desktop */
+/* Hide Hamburger Menu by default on Desktop */
 .menu-toggle-btn {
   display: none;
 }
 
+/* Phablets & Small Tablets */
 @media (max-width: 768px) {
   body { font-size: 14px; }
   .container { padding: 0 1.5rem; }
   
-  .grid-2, .grid-3, .grid-4, .service-cards-row, .form-row {
+  .grid-2, .grid-4 {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
   
-  /* Sticky Header Mobile Layout */
+  /* Header & Navigation */
   header {
     height: 70px;
     display: flex;
@@ -1669,7 +1700,7 @@ footer {
     letter-spacing: 2px;
   }
   
-  /* Dropdown Menu styling */
+  /* Scrollable Dropdown Menu on Mobile */
   nav {
     position: fixed;
     top: 70px;
@@ -1677,7 +1708,7 @@ footer {
     width: 100vw;
     height: calc(100vh - 70px);
     background-color: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     flex-direction: column;
     align-items: center;
@@ -1689,6 +1720,7 @@ footer {
     transform: translateY(-15px);
     transition: var(--transition-smooth);
     z-index: 99;
+    overflow-y: auto; /* Enable scroll if height is constrained */
   }
   
   nav.active {
@@ -1698,8 +1730,9 @@ footer {
   }
   
   nav a {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     letter-spacing: 3px;
+    padding: 0.5rem 2rem;
   }
 
   .header-actions {
@@ -1709,10 +1742,10 @@ footer {
   }
 
   .header-actions .btn-primary {
-    display: none; /* Hide button on mobile header to save space */
+    display: none; /* Hide header book btn to save space */
   }
 
-  /* Show Hamburger Toggle */
+  /* Hamburger Menu Button */
   .menu-toggle-btn {
     display: flex;
     align-items: center;
@@ -1731,7 +1764,6 @@ footer {
     color: var(--color-accent);
   }
 
-  /* Hamburger transition animation */
   .menu-toggle-btn.active .line-2 {
     opacity: 0;
   }
@@ -1746,78 +1778,173 @@ footer {
     transition: var(--transition-smooth);
   }
   
-  /* Bespoke Customizer adjustments */
+  /* Customizer Custom Touch Scrollable Tab Bar */
+  .controls-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    -webkit-overflow-scrolling: touch;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.2rem;
+  }
+  
+  .controls-tabs::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on Chrome/Safari */
+  }
+  
+  .tab-btn {
+    flex: 0 0 auto; /* Stop shrinking buttons */
+    white-space: nowrap;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.7rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  .tab-btn.active {
+    border-bottom: 2px solid var(--color-accent);
+  }
+  
   .designer-preview-card {
     padding: 1.5rem;
   }
+  
   .visualizer-canvas-container {
-    min-height: 280px;
+    min-height: 300px;
     padding: 1rem;
   }
-  .tab-btn {
-    font-size: 0.62rem;
-    padding: 0.8rem 0.2rem;
-    letter-spacing: 0.8px;
-  }
+  
   .tab-content {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem;
   }
+
+  /* Booking form mobile sizing */
+  .booking-card-form {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .cart-drawer {
+    width: 100vw;
+  }
+}
+
+/* Standard Mobile Phones */
+@media (max-width: 480px) {
+  h1, .hero-content h1 {
+    font-size: 2.3rem;
+    line-height: 1.15;
+  }
+  
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-badges-strip {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .hero-badge-item {
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-desc {
+    font-size: 0.85rem;
+  }
+  
+  /* Make catalog list 1 column */
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-filters-bar {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .filter-group-btns {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+  }
+
+  /* Customizer controls grid stacking */
   .fabric-grid {
-    max-height: 220px;
-  }
-  .fabric-card {
-    padding: 0.6rem;
-    gap: 0.6rem;
-  }
-  .fabric-color-bubble {
-    width: 35px;
-    height: 35px;
-  }
-  .fabric-name {
-    font-size: 0.7rem;
-  }
-  .fabric-desc {
-    font-size: 0.55rem;
+    grid-template-columns: 1fr; /* Single column fabric selection to prevent squished text */
+    max-height: 250px;
   }
 
-  /* Modal boxes responsive */
-  .modal-box {
-    padding: 2.2rem 1.5rem;
-  }
-  .modal-box h3 {
-    font-size: 1.8rem;
+  .details-options.grid-3 {
+    grid-template-columns: 1fr;
   }
 
-  /* Sizing ranges adjustments */
+  .details-options.grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .service-cards-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   .range-spinner-wrap {
     gap: 0.8rem;
   }
+
   .value-bubble {
     font-size: 1.1rem;
     width: 35px;
   }
-  
-  .booking-card-form {
-    padding: 2rem 1.5rem;
+
+  .modal-box {
+    padding: 2.2rem 1.2rem;
   }
-  
+
+  .modal-box h3 {
+    font-size: 1.6rem;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
-  .footer-about {
-    grid-column: span 1;
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
-  
-  .cart-drawer {
-    width: 100vw;
-  }
-  
+
   .toast-message {
     left: 1rem;
     right: 1rem;
     bottom: 1rem;
-    padding: 1rem 1.5rem;
-    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.75rem;
   }
 }
