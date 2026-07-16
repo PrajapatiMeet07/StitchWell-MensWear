@@ -404,9 +404,10 @@ section {
 /* Interactive customizer styles */
 .designer-grid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: minmax(0, 4.5fr) minmax(0, 5.5fr);
   gap: 3rem;
   align-items: stretch;
+  width: 100%;
 }
 
 .designer-preview-card {
@@ -1846,15 +1847,22 @@ footer {
   }
 
   .visualizer-canvas-container {
-    min-height: 130px;
-    height: 130px;
+    height: 30vw; /* Fluid height - scales automatically based on viewport size */
+    min-height: 120px;
+    max-height: 200px;
     padding: 0.2rem;
     background-color: transparent;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .visualizer-canvas-container svg {
-    max-height: 125px;
+    height: 100%;
+    max-height: 95%;
+    width: auto;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
   }
 
